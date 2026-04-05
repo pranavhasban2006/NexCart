@@ -77,3 +77,9 @@ The default admin account (after seeding) is:
 
 ## ⚖️ License
 This project is licensed under the MIT License.
+
+## 💳 Test Payment Credentials
+This app uses PayPal Sandbox (no real money). Use these to test checkout:
+
+- **Email**: sb-fhjt550289551@personal.example.com
+- **Password**: 8DI$#kqL
