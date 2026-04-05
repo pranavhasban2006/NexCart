@@ -1,0 +1,134 @@
+const mongoose=require("mongoose");
+const productSchema=new mongoose.Schema({
+    name:{
+        type:String,
+        required:true,
+        trim:true
+    },
+    price:{
+        type:Number,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    discount:{
+        type:Number,
+        
+    },
+    sku:{
+        type:String,
+        required:true,
+        unique:true
+    },
+    
+    category:{
+        type:String,
+        required:true
+    },
+    brand:{
+        type:String,
+        required:true
+    },
+    rating:{
+        type:Number,
+        required:true,
+        default:0
+    },
+    numReviews:{
+        type:Number,
+        required:true,
+        default:0
+    },
+    countInStock:{
+        type:Number,
+        required:true
+    },
+    sizes:{
+        type:Array,
+        required:true
+    },
+    colors:{
+        type:Array,
+        required:true
+    },
+    collection:{
+        type:String,
+        required:true
+    },
+    material:{
+        type:String,
+        required:true
+    },
+    gender:{
+        type:String,
+        required:true,
+        enum:["men","women","kids"] 
+
+    },
+    images:{
+        type:Array,
+        required:true
+    },
+    altText:{
+        type:String,
+        
+    },
+    isFeatured:{
+        type:Boolean,
+        default:false
+    },
+    isPublished:{
+        type:Boolean,
+        default:false
+    },
+
+    tags:{
+        type:Array,
+        default:[]
+    },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
+    },
+    metaTitle:{
+        type:String,
+        required:true
+    },
+    metaDescription:{
+        type:String,
+        required:true
+    },
+    metaKeywords:{
+        type:String,
+        required:true
+    },
+    dimensions:{
+        length:{
+            type:Number,
+            required:true
+        },
+        width:{
+            type:Number,
+            required:true
+        },
+        height:{
+            type:Number,
+            required:true
+        }
+    },
+    weight:{
+        type:Number,
+        required:true
+    },
+
+    
+    
+    
+},{
+    timestamps:true
+});
+const Product=mongoose.model("Product",productSchema);
+module.exports=Product;
