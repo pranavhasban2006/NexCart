@@ -1,0 +1,45 @@
+
+> frontend@0.0.0 lint
+> eslint .
+
+
+D:\Projects\NexCart\frontend\src\components\Products\NewArrivals.jsx
+  4:10  error  'mockProducts' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+D:\Projects\NexCart\frontend\src\components\Products\ProductDetails.jsx
+  23:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  21 |       const newGuestId = "guest_" + Math.random().toString(36).substring(2, 10);
+  22 |       localStorage.setItem("guestId", newGuestId);
+> 23 |       setGuestId(newGuestId);
+     |       ^^^^^^^^^^ Avoid calling setState() directly within an effect
+  24 |     }
+  25 |   }, [guestId]);
+  26 |                                                                                                     react-hooks/set-state-in-effect
+  46:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  44 |     // to prevent showing ghost data from previous product visits
+  45 |     if (product && product._id === id) { 
+> 46 |       setMainImage(product.images?.[0]?.url || '');
+     |       ^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  47 |       setSelectedSize(product.sizes?.[0] || '');
+  48 |       setSelectedColor(product.colors?.[0] || '');
+  49 |       setQuantity(1);  react-hooks/set-state-in-effect
+
+D:\Projects\NexCart\frontend\src\pages\Collection.jsx
+  21:6  warning  React Hook useEffect has a missing dependency: 'queryParams'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Γ£û 4 problems (3 errors, 1 warning)
+

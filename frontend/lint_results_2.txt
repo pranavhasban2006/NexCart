@@ -1,0 +1,15 @@
+
+> frontend@0.0.0 lint
+> eslint .
+
+
+D:\Projects\NexCart\frontend\src\components\Products\ProductDetails.jsx
+  18:19  error    'setGuestId' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+  46:7   warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+  48:7   warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+  50:7   warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+  52:7   warning  Unused eslint-disable directive (no problems were reported from 'react-hooks/exhaustive-deps')
+
+Γ£û 5 problems (1 error, 4 warnings)
+  0 errors and 4 warnings potentially fixable with the `--fix` option.
+
