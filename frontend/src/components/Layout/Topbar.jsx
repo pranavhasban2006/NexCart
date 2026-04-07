@@ -19,7 +19,7 @@ const Topbar = () => {
                     </a>
                 </div>
                 <div className="text-center grow">
-                    <span>Be The First To Change Yourself</span>
+                    <span>Redefine Your Style</span>
                 </div>
                 <div className="text-sm hidden md:block">
                     <a href="tel:+911234567890" className="hover:text-[#1b2a35]">
