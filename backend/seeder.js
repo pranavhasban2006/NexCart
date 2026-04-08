@@ -1,3 +1,4 @@
+const path = require("path");
 const mongoose=require("mongoose");
 const Product=require("./models/Product");
 const dotenv=require("dotenv");
@@ -6,7 +7,7 @@ const Cart=require("./models/cart");
 const products=require("./data/products");
 const connectDB=require("./config/db");
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, ".env") });
 
 const seedData=async()=>{
     try{
@@ -31,7 +32,7 @@ const seedData=async()=>{
                 ...product,
                 user: userID,
                 gender: product.gender ? product.gender.toLowerCase() : "men",
-                collection: product.collections || "Summer Collection",
+                collectionName: product.collections || "Summer Collection",
                 discount: product.discountPrice || 0,
                 metaTitle: product.name,
                 metaDescription: product.description ? product.description.substring(0, 100) : "A great product",

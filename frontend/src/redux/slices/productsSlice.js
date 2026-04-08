@@ -7,7 +7,7 @@ export const fetchProductsByFilters= createAsyncThunk("products/fetchProductsByF
     order,
     page,
     limit,
-    collection,
+    collectionName,
     size,
     color,
     gender,
@@ -24,7 +24,7 @@ export const fetchProductsByFilters= createAsyncThunk("products/fetchProductsByF
     if(order) query.append("order",order);
     if(page) query.append("page",page);
     if(limit) query.append("limit",limit);
-    if(collection) query.append("collection",collection);
+    if(collectionName) query.append("collectionName",collectionName);
     if(size) query.append("size",size);
     if(color) query.append("color",color);
     if(gender) query.append("gender",gender);
@@ -73,7 +73,7 @@ const productsSlice=createSlice({
             order:"",
             page:1,
             limit:10,
-            collection:"",
+            collectionName:"",
             size:"",
             color:"",
             gender:"",

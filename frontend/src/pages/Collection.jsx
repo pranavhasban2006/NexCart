@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductsByFilters } from '../redux/slices/productsSlice';
 
 const Collection = () => {
-  const { collection } = useParams();
+  const { collectionName } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const sidebarRef = useRef(null);
@@ -14,9 +14,9 @@ const Collection = () => {
   const queryParams = Object.fromEntries([...searchParams]);
 
   useEffect(() => {
-    dispatch(fetchProductsByFilters({ collection, ...queryParams }));
+    dispatch(fetchProductsByFilters({ collectionName, ...queryParams }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, searchParams, collection]);
+  }, [dispatch, searchParams, collectionName]);
 
   useEffect(() => {
     const handleClickOutside = (e) => {

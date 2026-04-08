@@ -7,7 +7,7 @@ const router=express.Router();
 // @access Private/admin
 router.post("/",protect,admin,async(req,res)=>{
     try{
-        const {name,description,price,discount,sku,category,brand,rating,numReviews,countInStock,sizes,colors,collection,material,gender,images,altText,isFeatured,isPublished,tags,metaTitle,metaDescription,metaKeywords,dimensions,weight}= req.body;
+        const {name,description,price,discount,sku,category,brand,rating,numReviews,countInStock,sizes,colors,collectionName,material,gender,images,altText,isFeatured,isPublished,tags,metaTitle,metaDescription,metaKeywords,dimensions,weight}= req.body;
         const product = new Product({
             name,
             description,
@@ -21,7 +21,7 @@ router.post("/",protect,admin,async(req,res)=>{
             countInStock,
             sizes,
             colors,
-            collection,
+            collectionName,
             material,
             gender,
             images,
@@ -50,7 +50,7 @@ router.post("/",protect,admin,async(req,res)=>{
 //@access Private/admin
 router.put("/:id",protect,admin,async(req,res)=>{
     try{
-        const {name,description,price,discount,sku,category,brand,rating,numReviews,countInStock,sizes,colors,collection,material,gender,images,altText,isFeatured,isPublished,tags,user,metaTitle,metaDescription,metaKeywords,dimensions,weight}= req.body;
+        const {name,description,price,discount,sku,category,brand,rating,numReviews,countInStock,sizes,colors,collectionName,material,gender,images,altText,isFeatured,isPublished,tags,user,metaTitle,metaDescription,metaKeywords,dimensions,weight}= req.body;
         const product = await Product.findById(req.params.id);
         if(product){
             product.name=name || product.name;
@@ -65,7 +65,7 @@ router.put("/:id",protect,admin,async(req,res)=>{
             product.countInStock=countInStock || product.countInStock;
             product.sizes=sizes || product.sizes;
             product.colors=colors || product.colors;
-            product.collection=collection || product.collection;
+            product.collectionName=collectionName || product.collectionName;
             product.material=material || product.material;
             product.gender=gender || product.gender;
             product.images=images || product.images;
@@ -112,11 +112,11 @@ router.delete("/:id",protect,admin,async(req,res)=>{
 //@access Public
 router.get("/",async(req,res)=>{
     try{
-        const {collection, gender,size,color,minPrice,maxPrice,sortBy,search, category,material,brand,limit}=req.query;
+        const {collectionName, gender,size,color,minPrice,maxPrice,sortBy,search, category,material,brand,limit}=req.query;
         const query={};
         //filter logic
-        if(collection && collection.toLowerCase() !=='all'){
-            query.collection=collection;
+        if(collectionName && collectionName.toLowerCase() !=='all'){
+            query.collectionName=collectionName;
         }
         if(gender && gender.toLowerCase() !=='all'){
             query.gender=gender.toLowerCase();

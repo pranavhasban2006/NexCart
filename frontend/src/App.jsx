@@ -30,6 +30,7 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
             <Route path="collections" element={<Collection />} />
+            <Route path="collections/:collectionName" element={<Collection />} />
             <Route path="product/:id" element={<ProductDetails />} />
             <Route path="checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
             <Route path="order-confirmation" element={<ProtectedRoute><OrderConfirmation /></ProtectedRoute>} />
