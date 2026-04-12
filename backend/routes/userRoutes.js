@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const jwt=require("jsonwebtoken");
 const User=require("../models/User");
-const {protect}=require("../middleware/authMiddleware");
+const {protect}=require("../middleware/authMiddleware");//custom middleware that guards routes
 
 router.post("/register",async(req,res)=>{
     const {name,email,password}=req.body;
@@ -26,7 +26,10 @@ router.post("/register",async(req,res)=>{
             token
         });
     }catch(error){
-        console.log(error);
+        console.error(error);
+        if (error.name === "ValidationError") {
+            return res.status(400).json({ message: Object.values(error.errors).map(val => val.message)[0] });
+        }
         res.status(500).json({message:"Server error", error: error.message});
     }
 });
@@ -58,7 +61,7 @@ router.post("/login",async(req,res)=>{
             token
         });
     }catch(error){
-        console.log(error);
+        console.error(error);
         res.status(500).json({message:"Server error", error: error.message});
     }
 });
@@ -68,6 +71,7 @@ router.post("/login",async(req,res)=>{
 // @access Private
 router.get("/profile",protect,async(req,res)=>{
     try{
+        //the - means exclude, so it fetches everything except the password
         const user=await User.findById(req.user.id).select("-password");
         res.json(user);
     }catch(error){

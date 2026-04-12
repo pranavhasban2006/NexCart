@@ -16,7 +16,7 @@ export const fetchAllOrders = createAsyncThunk(
             return rejectWithValue(error.response?.data || { message: "Server Error" });
         }
     }
-);
+); 
 
 // Update order status
 export const updateOrderStatus = createAsyncThunk(

@@ -18,7 +18,7 @@ export const login = createAsyncThunk("auth/login", async (userData, { rejectWit
         localStorage.setItem("userToken", response.data.token);
         return response.data;
     } catch (error) {
-        return rejectWithValue(error.response.data.message);
+        return rejectWithValue(error.response?.data?.message || error.message);
     }
 });
 //Async THunk for user register
@@ -29,7 +29,7 @@ export const register = createAsyncThunk("auth/register", async (userData, { rej
         localStorage.setItem("userToken", response.data.token);
         return response.data;
     } catch (error) {
-        return rejectWithValue(error.response.data.message);
+        return rejectWithValue(error.response?.data?.message || error.message);
     }
 });
 

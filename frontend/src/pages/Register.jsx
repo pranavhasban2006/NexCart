@@ -21,9 +21,16 @@ const Register = () => {
       toast.error("Passwords do not match");
       return;
     }
+
+    if(password.length < 6){
+      toast.error("password should of minimum 6 letters");
+      return;
+    }
+
     //register user 
     dispatch(register({name, email, password})).then((res) => {
       if(res.payload && res.payload._id) {
+        toast.success("user registered successfully and u can login");
         navigate("/");
       }
     });
