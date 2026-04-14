@@ -13,6 +13,7 @@ const subscriberRoutes=require("./routes/subscriberroute");
 const adminRoutes=require("./routes/adminroutes");
 const productadminroutes=require("./routes/productadminroutes");
 const adminorderroutes=require("./routes/adminorderroutes");
+const chatRoutes=require("./routes/chatRoutes");
 
 const app=express();
 
@@ -24,6 +25,8 @@ app.use(cors());
 app.use("/api/cart",cartRoutes);
 app.use("/api/checkout",checkoutRoutes);
 app.use("/api/orders",orderRoutes);
+
+
 app.use("/api/upload",uploadRoutes);
 app.use("/api/subscribe",subscriberRoutes);
 app.use("/api/admin",adminRoutes);
@@ -31,6 +34,7 @@ app.use("/api/admin/products",productadminroutes);
 app.use("/api/admin/orders",adminorderroutes);
 app.use("/api/users",userRoutes);
 app.use("/api/products",productRoutes);
+app.use("/api/chat",chatRoutes);
 
 app.get("/",(req,res)=>{
     res.send("Hello World");

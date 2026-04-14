@@ -4,6 +4,7 @@ import Topbar from "./Topbar.jsx";
 import Navbar from "../Common/Navbar.jsx";
 import Footer from "../Common/Footer.jsx";
 import { Outlet } from "react-router-dom";
+import ChatSidebar from "../Chat/ChatSidebar.jsx";
 
 const UserLayout = () => {
   return (
@@ -18,7 +19,7 @@ const UserLayout = () => {
       </main>
 
       <Footer />
-
+      <ChatSidebar />
     </div>
   );
 };
